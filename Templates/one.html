@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body style='background-color:Silver;'>
+<style>
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
+<h1>Welcome</h1>
+
+{% if messages %}
+    {% for i in messages %}
+        <center><h4>{{i}}</h4></center>
+    {% endfor %}
+{% endif %}
+<form action="/upload/" method='POST' enctype='multipart/form-data'>
+  {% csrf_token %}
+  <label for="cars">Select From Dropdown:</label>
+  <select name='module' id="cars">
+    <option value="student">Student</option>
+    <option value="subject">Subject</option>
+    <option value="stud_sub">Student Subject</option>
+    <option value="stud_rep">Student Report</option>
+  </select>
+  <input class="form-control form-control-sm" type="file" id="myFile" name="filename" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'>
+  <input class="button" type="submit" value="Upload">
+  <a href="export_excel/" class="button" align="right">Export</a>
+</form>
+
+
+</body>
+</html>
